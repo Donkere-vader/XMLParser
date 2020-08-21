@@ -68,7 +68,8 @@ class XMLParser:
         # get tag name
         tag_name = list_tag_content[0]
         if tag_name.startswith('/'):
-            self.working_tags.remove(self.working_tags[-1])  # remove urself bitch
+            if len(self.working_tags) != 0:
+                self.working_tags.remove(self.working_tags[-1])  # remove urself bitch
             return
 
         # get attrs
