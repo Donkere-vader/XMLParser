@@ -76,6 +76,8 @@ class XMLParser:
         for item in list_tag_content[1:]:  # without the name
             name = item.split("=")[0]
             value = item[len(name) + 2:][:-1]  # get value and remove " or '
+            if name == '':
+                continue
             attrs[name] = value
 
         # construct tag
