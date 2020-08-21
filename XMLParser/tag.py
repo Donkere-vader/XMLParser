@@ -2,11 +2,30 @@ class Tag:
     """ A XML tag """
     def __init__(self, _name, _self_closing, **kwargs):
         self.name = _name  # tag name <root> tag.name would be 'root'
-        self.attrs = kwargs  # all the arrgs <root x="test"> would become -> kwargs: {"x": "test"}
+        self.set_attrs(kwargs)  # all the arrgs <root x="test"> would become -> kwargs: {"x": "test"}
         self.self_closing = _self_closing  # self_closing tag: <self_closing_tag />
         self.children = []
         self.parent = None
         self.content = None
+
+    def set_attrs(self, kwargs):
+        self.attrs = {}
+        for item in kwargs:
+            print(kwargs[item])
+            try:
+                self.attrs[item] = int(kwargs[item])
+                print('int')
+                continue
+            except ValueError:
+                pass
+
+            if kwargs[item].lower() == 'false':
+                kwargs[item] = False
+                print('bool')
+            elif kwargs[item].lower() == 'true':
+                kwargs[item] = True
+                print('bool')
+            self.attrs[item] = kwargs[item]
 
     def set_parent(self, parent):
         """ Called when setting the parent """
