@@ -11,6 +11,7 @@ class XMLParser:
         self.root = None
         self.working_tags = []
         tag_str = ""
+        content = ""
         new_tag = True
         in_str = False
 
@@ -19,8 +20,13 @@ class XMLParser:
                 continue
             if new_tag:
                 if char == '<':
+                    if len(content.replace(' ', '').replace('\t', '')) > 0:
+                        self.working_tags[-1].content = content.strip(' ').strip('\t')
+                    content = ""
                     tag_str += char
                     new_tag = False
+                else:
+                    content += char
             else:
                 tag_str += char
                 if char == '"' or char == "'":
