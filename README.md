@@ -6,3 +6,15 @@ It's probably not so good/ clean good. And probably not the best way to do it. B
 This is a very simple module and not tested that much, I'm going to use this in my own project but There is a big chance that there are some reliabillity issues with different forms of formatting and such.
 
 Please repport any issues you encounter.
+
+### Supported format
+The following situations are all supported by the module.  
+
+Oneliners:  
+``<root><text></text></root>``
+
+Spaces between the = with attributes:  
+``<root name = "main root thinige">``
+
+self closing:  
+``<item />``
