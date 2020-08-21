@@ -16,7 +16,7 @@ class Tag:
     def replace(self, new_tag):
         """ Replace this tag with a new tag """
         new_tag.parent = self.parent
-        new_tag.children = self.children
+        new_tag.children += self.children
         for child in self.children:
             child.parent = new_tag
         self.parent.children.append(new_tag)
