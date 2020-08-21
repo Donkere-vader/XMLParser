@@ -11,20 +11,16 @@ class Tag:
     def set_attrs(self, kwargs):
         self.attrs = {}
         for item in kwargs:
-            print(kwargs[item])
             try:
                 self.attrs[item] = int(kwargs[item])
-                print('int')
                 continue
             except ValueError:
                 pass
 
             if kwargs[item].lower() == 'false':
                 kwargs[item] = False
-                print('bool')
             elif kwargs[item].lower() == 'true':
                 kwargs[item] = True
-                print('bool')
             self.attrs[item] = kwargs[item]
 
     def set_parent(self, parent):
