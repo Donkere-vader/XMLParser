@@ -22,6 +22,17 @@ class Tag:
         self.parent.children.append(new_tag)
         self.parent.children.remove(self)
 
+    def print_out(self):
+        self.tabs = 0
+        self.print_tag(self)
+
+    def print_tag(self, tag):
+        print("\t" * self.tabs + str(tag))
+        self.tabs += 1
+        for child in tag.children:
+            self.print_tag(child)
+        self.tabs -= 1
+
     def __repr__(self):
         return str(self)  # call self.__str__()
 
