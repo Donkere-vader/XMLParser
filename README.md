@@ -18,3 +18,11 @@ Spaces between the = with attributes:
 
 self closing:  
 ``<item />``
+
+## Installation
+To install run the following command:
+
+! Please change python3.8 in the first command to the python version you have
+```
+git clone https://github.com/Donkere-vader/xmlparser.git /usr/lib/python3.8/xmlparser
+```
