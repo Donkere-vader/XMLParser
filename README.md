@@ -20,6 +20,9 @@ self closing:
 ``<item />``
 
 ## Installation
+! Linux systems only
+For windows and mac just clone the repo to where the modules get installed
+
 To install run the following command:
 
 ! Please change python3.8 in the first command to the python version you have
