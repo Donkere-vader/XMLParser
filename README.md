@@ -20,12 +20,4 @@ self closing:
 ``<item />``
 
 ## Installation
-! Linux systems only
-For windows and mac just clone the repo to where the modules get installed
-
-To install run the following command:
-
-! Please change python3.8 in the first command to the python version you have
-```
-git clone https://github.com/Donkere-vader/xmlparser.git /usr/lib/python3.8/xmlparser
-```
+Move the XMLParser file into the folder with your python modules
