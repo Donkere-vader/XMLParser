@@ -12,7 +12,9 @@ class Tag:
         self.attrs = {}
         for item in kwargs:
             try:
-                self.attrs[item] = int(kwargs[item])
+                float_item = float(kwargs[item])
+                int_item = int(float_item)
+                self.attrs[item] = int_item if int_item == float_item else float_item
                 continue
             except ValueError:
                 pass
