@@ -14,6 +14,8 @@ class XMLParser:
         content = ""
         new_tag = True
         in_str = False
+        in_str_char = ""
+        past_char = ""
 
         for char in xml_str:
             if char == '\n' and not in_str:
@@ -30,7 +32,9 @@ class XMLParser:
             else:
                 tag_str += char
                 if char == '"' or char == "'":
-                    in_str = not in_str
+                    if not (in_str and in_str_char != char):
+                        in_str = not in_str
+                        in_str_char = char
                 elif char == '>' and not in_str:
                     new_tag = True
                     self.create_tag(tag_str)
@@ -55,9 +59,13 @@ class XMLParser:
         in_str = False
         list_tag_content = []
         new_item = ""
+        in_str_char = ""
+
         for char in tag_content:
             if char == '"' or char == "'":
-                in_str = not in_str
+                if not (in_str and in_str_char != char):
+                    in_str = not in_str
+                    in_str_char = char
             elif char == ' ' and not in_str:
                 list_tag_content.append(new_item)
                 new_item = ""
