@@ -7,6 +7,10 @@ This is a very simple module and not tested that much, I'm going to use this in 
 
 Please repport any issues you encounter.
 
+### Known issues :bug:
+- when assinging a value to an attribute and the value contains a '=', if there are any spaces surrounding the '=' those will be removed.
+- the escape character doesn't escape the ' and " characters
+
 ### Supported format
 The following situations are all supported by the module.  
 
