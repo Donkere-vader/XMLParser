@@ -87,7 +87,9 @@ class XMLParser:
             self.root = tag
         elif len(self.working_tags) == 0:
             tag.set_parent(self.root)
-            self.working_tags.append(tag)
+            if not tag.self_closing:
+                self.working_tags.append(tag)
         else:
             tag.set_parent(self.working_tags[-1])
-            self.working_tags.append(tag)
+            if not tag.self_closing:
+                self.working_tags.append(tag)
