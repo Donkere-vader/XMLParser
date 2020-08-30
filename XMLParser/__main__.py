@@ -5,9 +5,11 @@ class XMLParser:
         pass
 
     def load(self, file):
+        """ Load a file """
         return self.loads(file.read())
 
-    def loads(self, xml_str):
+    def loads(self, xml_str: str):
+        """ Call this to construct the XML """
         self.root = None
         self.working_tags = []
         tag_str = ""
@@ -47,7 +49,28 @@ class XMLParser:
             return
 
         tag_content = tag[1:][:-1]  # remove the <>
-        tag_content = tag_content.replace(' =', '=').replace('= ', '=').replace(' = ', '=')  # get the formatting right
+
+        in_str = ""
+        in_str_char = ""
+        past_char = ""
+        new_tag_content = ""
+        for char in tag_content:
+            if char == '"' or char == "'":
+                if in_str:
+                    if in_str_char == char:
+                        in_str = False
+                else:
+                    in_str = True
+                    in_str_char = char
+            if char == '=':
+                if not in_str and new_tag_content[-1] == " ":
+                    new_tag_content = new_tag_content[:-1]
+            elif char == ' ':
+                if not in_str and past_char == '=':
+                    continue
+            past_char = char
+            new_tag_content += char
+        tag_content = new_tag_content
 
         # is the tag self closing? like: <self_closing_tab />
         self_closing = False
